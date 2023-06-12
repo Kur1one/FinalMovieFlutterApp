@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movieapp/description.dart';
 
+import '../models/movie_model.dart';
 import '../utils/text.dart';
 
 class TV extends StatelessWidget {
@@ -29,7 +30,12 @@ class TV extends StatelessWidget {
                         posterurl: 'https://image.tmdb.org/t/p/w500'+tv?[index]['poster_path'],
                         description: tv?[index]['overview'],
                         vote: tv![index]['vote_average'].toString(),
-                        launch_on: tv?[index]['release_date'],)));
+                        launch_on: tv?[index]['release_date'],
+                        movie: Movie(
+                            id: '1',
+                            title: 'title',
+                            posterUrl: 'https://image.tmdb.org/t/p/w500'
+                        ),)));
 
                     },
                     child: tv?[index]['original_name']!=null?Container(

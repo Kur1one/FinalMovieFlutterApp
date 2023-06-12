@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:movieapp/description.dart';
+import 'package:movieapp/models/movie_model.dart';
 
 import 'secrets.dart';
 import 'package:flutter/material.dart';
@@ -22,8 +23,10 @@ class MovieDetailsScreen extends StatelessWidget {
     final vote = movie['vote_average'].toString();
     final launchOn = movie['release_date'];
 
+
+
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       body: Description(
         name: name,
         description: description,
@@ -31,6 +34,11 @@ class MovieDetailsScreen extends StatelessWidget {
         posterurl: posterUrl,
         vote: vote,
         launch_on: launchOn,
+        movie: Movie(
+            id: '1',
+            title: 'John Wick',
+            posterUrl: '')
+
       ),
     );
   }

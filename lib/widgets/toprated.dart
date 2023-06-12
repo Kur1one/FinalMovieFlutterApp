@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movieapp/description.dart';
+import 'package:movieapp/models/movie_model.dart';
 
 import '../utils/text.dart';
 
@@ -28,7 +29,12 @@ class TopRated extends StatelessWidget {
                         posterurl: 'https://image.tmdb.org/t/p/w500'+toprated?[index]['poster_path'],
                         description: toprated?[index]['overview'],
                         vote: toprated![index]['vote_average'].toString(),
-                        launch_on: toprated?[index]['release_date'],)));
+                        launch_on: toprated?[index]['release_date'],
+                        movie: Movie(
+                          id: '1',
+                          title: 'title',
+                          posterUrl: 'https://image.tmdb.org/t/p/w500'
+                        ),)));
 
                     },
                     child: toprated?[index]['title']!=null?Container(

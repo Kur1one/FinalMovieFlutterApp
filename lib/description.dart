@@ -1,17 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:movieapp/models/movie_model.dart';
+import 'package:movieapp/providers/favourite_list_provider.dart';
 import 'package:movieapp/utils/text.dart';
+import 'package:movieapp/widgets/movie_details_screen.dart';
+import 'package:provider/provider.dart';
 
 class Description extends StatelessWidget {
-  const Description({Key? key, required this.name, required this.description, required this.bannerurl, required this.posterurl, required this.vote, required this.launch_on}) : super(key: key);
+  Description({Key? key, required this.name, required this.description, required this.bannerurl, required this.posterurl, required this.vote, required this.launch_on, required Movie movie}) : movie = movie,   super(key: key);
   final String name, description, bannerurl, posterurl, vote, launch_on;
+  late final Movie movie;
+
 
   @override
   Widget build(BuildContext context) {
+    final movieProvider = Provider.of<MovieProvider>(context, listen: false);
+
+    bool isFavourite = movieProvider.favourites.contains(movie);
+
     return Scaffold(
       backgroundColor: Colors.black,
       body: Container(
         child: ListView(
           children: [
+            ElevatedButton(onPressed: () {
+              if (isFavourite) {
+                movieProvider.removeFromFavourites(movie);
+              }
+              else {
+                movieProvider.addToFavourites(movie);
+              }
+
+            }, child: isFavourite ? Text('Remove from Favourites') : Text('Add to Favourites')),
             Container(
               height: 250,
               child: Stack(

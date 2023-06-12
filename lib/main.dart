@@ -1,9 +1,14 @@
+
+
 import 'package:flutter/material.dart';
+import 'package:movieapp/providers/favourite_list_provider.dart';
 import 'package:movieapp/utils/text.dart';
+import 'package:movieapp/widgets/favourite_screen.dart';
 import 'package:movieapp/widgets/search_screen.dart';
 import 'package:movieapp/widgets/toprated.dart';
 import 'package:movieapp/widgets/trending.dart';
 import 'package:movieapp/widgets/tv.dart';
+import 'package:provider/provider.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 import 'package:movieapp/widgets/splash_screen.dart';
 import 'package:movieapp/widgets/login_screen.dart';
@@ -14,7 +19,12 @@ import 'package:firebase_core/firebase_core.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp( MyApp());
+  runApp(
+    ChangeNotifierProvider<MovieProvider>(
+      create: (context) => MovieProvider(),
+      child: MyApp(),
+    ),
+  );
 }
 
   class MyApp extends StatelessWidget {
@@ -30,6 +40,7 @@ void main() async {
           '/login': (context) => SignInScreen(),
           '/register': (context) => SignUpScreen(),
           '/search': (context) => SearchScreen(),
+          '/favourites': (context) => FavoritesScreen(),
         },
       );
     }
@@ -98,7 +109,7 @@ class _HomeState extends State<Home> {
     Widget build(BuildContext context) {
       final ThemeData currentTheme = isDarkTheme ? darkTheme : lightTheme;
       return MaterialApp(
-
+        themeMode: ThemeMode.light,
         debugShowCheckedModeBanner: false,
         theme: currentTheme,
         home: Scaffold(
@@ -134,6 +145,9 @@ class _HomeState extends State<Home> {
           mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
+            ElevatedButton(onPressed: () {
+              Navigator.pushNamed(context, '/favourites');
+            }, child: Text('Go to Favourites')),
             FloatingActionButton(
               onPressed: () {
                 Navigator.pushNamed(context, '/login');

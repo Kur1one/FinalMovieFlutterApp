@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movieapp/description.dart';
 
+import '../models/movie_model.dart';
 import '../utils/text.dart';
 
 class TrendingMovies extends StatelessWidget {
@@ -28,7 +29,12 @@ class TrendingMovies extends StatelessWidget {
                 posterurl: 'https://image.tmdb.org/t/p/w500'+trending?[index]['poster_path'],
                 description: trending?[index]['overview'],
                 vote: trending![index]['vote_average'].toString(),
-                launch_on: trending?[index]['release_date'],)));
+                launch_on: trending?[index]['release_date'],
+                  movie: Movie(
+                      id: '1',
+                      title: 'title',
+                      posterUrl: 'https://image.tmdb.org/t/p/w500'
+                  ),)));
 
               },
               child:
