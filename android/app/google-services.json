@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "94532729721",
+    "project_id": "ifilm-3548f",
+    "storage_bucket": "ifilm-3548f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:94532729721:android:48c5cc3a0f1c615797cda8",
+        "android_client_info": {
+          "package_name": "com.example.movieapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "94532729721-p668jo7fcjg9ukg9s6j0816fm7kjlh0q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHy4LDuzcuEoew-Fs19vaquq1dolwQfSE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "94532729721-p668jo7fcjg9ukg9s6j0816fm7kjlh0q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
